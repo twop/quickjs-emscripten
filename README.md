@@ -1,3 +1,16 @@
+# THIS IS NOT THE ORIGINAL PROJECT
+
+This is a modified fork of https://github.com/justjake/quickjs-emscripten
+
+Goals:
+
+- esmodule output ready to be consumed on the web
+- shipped as the latest ecmascript target.
+
+Please don't use for production. If my modifications work I will try to upstream them back to the original project.
+
+Meanwhile, the npm module name: `@twop/quickjs-emscripten`
+
 # quickjs-emscripten
 
 Javascript/Typescript bindings for [QuickJS, a modern Javascript interpreter written in

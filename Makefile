@@ -23,6 +23,7 @@ CFLAGS_EMCC+=-s INVOKE_RUN=0
 CFLAGS_EMCC+=-s ALLOW_MEMORY_GROWTH=1
 CFLAGS_EMCC+=-s ALLOW_TABLE_GROWTH=1
 CFLAGS_EMCC+=-s FILESYSTEM=0
+CFLAGS_EMCC+=--extern-post-js exportQSnippet.txt
 ifdef DEBUG
 	CFLAGS=-O0
 	CFLAGS+=-DQTS_DEBUG_MODE
@@ -30,7 +31,7 @@ ifdef DEBUG
 	CFLAGS_EMCC+=-s ASSERTIONS=1
 else
 	CFLAGS=-O3
-	CFLAGS_EMCC+=-s SINGLE_FILE=1
+	CFLAGS_EMCC+=-s SINGLE_FILE=0
 	CFLAGS_EMCC+=--closure 1
 endif
 
@@ -48,14 +49,14 @@ $(BUILD_ROOT): $(BUILD_WRAPPER) $(BUILD_QUICKJS)
 
 # Generated source files
 $(WRAPPER_ROOT)/interface.h: $(WRAPPER_ROOT)/interface.c $(BUILD_ROOT)
-	ts-node generate.ts header $@
+	ts-node -O {\"module\":\"CommonJS\"} generate.ts header $@
 
 # generate.ts not listed because it changes more often for other reasons
 $(BUILD_WRAPPER)/symbols.json: $(WRAPPER_ROOT)/interface.c $(BUILD_ROOT)
-	ts-node generate.ts symbols $@
+	ts-node -O  {\"module\":\"CommonJS\"} generate.ts symbols $@
 
 ts/ffi.ts: $(WRAPPER_ROOT)/interface.c ts/ffi-types.ts generate.ts
-	ts-node generate.ts ffi $@
+	ts-node -O {\"module\":\"CommonJS\"} generate.ts ffi $@
 
 ### Executables
 # The WASM module we'll link to typescript

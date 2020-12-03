@@ -5,6 +5,25 @@ __metadata:
   version: 4
   cacheKey: 6
 
+"@twop/quickjs-emscripten@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@twop/quickjs-emscripten@workspace:."
+  dependencies:
+    "@types/emscripten": ^1.38.0
+    "@types/mocha": ^5.2.7
+    "@types/node": ^13.1.4
+    embin-darwin: 1.39.19-4
+    embin-linux: 1.39.19-4
+    mocha: 7.2.0
+    prettier: ^1.19.1
+    source-map-support: ^0.5.16
+    ts-node: ^8.5.4
+    typedoc: ^0.15.8
+    typedoc-plugin-markdown: ^2.2.16
+    typescript: ^3.7.4
+  languageName: unknown
+  linkType: soft
+
 "@types/emscripten@npm:^1.38.0":
   version: 1.38.0
   resolution: "@types/emscripten@npm:1.38.0"
@@ -1671,25 +1690,6 @@ fsevents@~2.1.1:
   checksum: fa0410eff2c05ce3328e11f82db4015e7819c986ee056d6b62b06ae112f4929af09ea3b879ca168ff9f0338f50972bba487ad0e46c879e42bfaf63c3c2ea7f09
   languageName: node
   linkType: hard
-
-"quickjs-emscripten@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "quickjs-emscripten@workspace:."
-  dependencies:
-    "@types/emscripten": ^1.38.0
-    "@types/mocha": ^5.2.7
-    "@types/node": ^13.1.4
-    embin-darwin: 1.39.19-4
-    embin-linux: 1.39.19-4
-    mocha: 7.2.0
-    prettier: ^1.19.1
-    source-map-support: ^0.5.16
-    ts-node: ^8.5.4
-    typedoc: ^0.15.8
-    typedoc-plugin-markdown: ^2.2.16
-    typescript: ^3.7.4
-  languageName: unknown
-  linkType: soft
 
 "readable-stream@npm:^2.0.6, readable-stream@npm:^2.3.5":
   version: 2.3.7
