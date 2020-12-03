@@ -5,6 +5,7 @@ WRAPPER_ROOT=c
 BUILD_ROOT=build
 BUILD_WRAPPER=$(BUILD_ROOT)/wrapper
 BUILD_QUICKJS=$(BUILD_ROOT)/quickjs
+DISTDIR=dist
 
 QUICKJS_OBJS=quickjs.o libregexp.o libunicode.o cutils.o quickjs-libc.o libbf.o
 QUICKJS_OBJS_WASM=$(patsubst %.o, $(BUILD_QUICKJS)/wasm/%.o, $(QUICKJS_OBJS))
@@ -35,9 +36,9 @@ else
 	CFLAGS_EMCC+=--closure 1
 endif
 
-wasm: $(BUILD_DIR) ts/quickjs-emscripten-module.js  ts/ffi.ts
+wasm: $(BUILD_DIR) ts/quickjs-emscripten-module.js ts/ffi.ts
 native: $(BUILD_WRAPPER)/native/test.exe
-all: wasm native
+all: wasm native copywasm
 
 $(BUILD_WRAPPER):
 	mkdir -p $(BUILD_WRAPPER)/wasm $(BUILD_WRAPPER)/native
@@ -62,6 +63,7 @@ ts/ffi.ts: $(WRAPPER_ROOT)/interface.c ts/ffi-types.ts generate.ts
 # The WASM module we'll link to typescript
 ts/quickjs-emscripten-module.js: $(BUILD_WRAPPER)/wasm/interface.o $(QUICKJS_OBJS_WASM)
 	$(EMCC) $(CFLAGS) $(CFLAGS_EMCC) $(EMCC_EXPORTED_FUNCS) -o $@ $< $(QUICKJS_OBJS_WASM)
+	cp ./ts/quickjs-emscripten-module.wasm $(DISTDIR)
 
 # Trying to debug C...
 $(BUILD_WRAPPER)/native/test.exe: $(BUILD_WRAPPER)/native/test.o $(BUILD_WRAPPER)/native/interface.o $(WRAPPER_ROOT) $(QUICKJS_OBJS_NATIVE)

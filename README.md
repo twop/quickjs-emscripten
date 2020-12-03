@@ -9,7 +9,7 @@ Goals:
 
 Please don't use for production. If my modifications work I will try to upstream them back to the original project.
 
-Meanwhile, the npm module name: `@twop/quickjs-emscripten`
+Meanwhile, the npm module name: `esm-quickjs-emscripten`
 
 # quickjs-emscripten
 
