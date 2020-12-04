@@ -1,11 +1,15 @@
 {
   "name": "esm-quickjs-emscripten",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "main": "./dist/quickjs.js",
   "module": "./dist/quickjs.js",
   "types": "./dist/quickjs.d.ts",
   "exports": {
-    "import": "./dist/quickjs.js"
+    ".": {
+      "import": "./dist/quickjs.js"
+    },
+    "./package.json": "./package.json",
+    "./": "./"
   },
   "description": "this is esmodule version for the web of https://github.com/justjake/quickjs-emscripten published as es2020 js spec.",
   "license": "MIT",
