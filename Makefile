@@ -23,6 +23,7 @@ CFLAGS_EMCC+=-s INVOKE_RUN=0
 CFLAGS_EMCC+=-s ALLOW_MEMORY_GROWTH=1
 CFLAGS_EMCC+=-s ALLOW_TABLE_GROWTH=1
 CFLAGS_EMCC+=-s FILESYSTEM=0
+CFLAGS_EMCC+=--js-transform "node prepare-for-esm.js"
 CFLAGS_EMCC+=--extern-post-js exportQSnippet.txt
 ifdef DEBUG
 	CFLAGS=-O0
